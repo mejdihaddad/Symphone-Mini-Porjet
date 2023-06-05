@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ parent() }} - Edit
+{% endblock %}
+
+{% block titre %}
+  {{ parent()|upper }} - Consultation de {{ categorie.nomCategorie }}
+{% endblock %}
+
+{% block body %}
+  <br />
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Détails de la catégorie</h4>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item"><strong>ID:</strong> {{ categorie.id }}</li>
+        <li class="list-group-item"><strong>Nom de la catégorie:</strong> {{ categorie.nomCategorie }}</li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

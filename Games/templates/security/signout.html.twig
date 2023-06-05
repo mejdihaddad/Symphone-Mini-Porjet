@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Sign Out
+{% endblock %}
+
+{% block body %}
+    {% redirect {{ path('login') }} %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - {{ article.getLibelle() }} Details
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">{{ article.getId() }}</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Libellé:</h4>
+                    <p>{{ article.getLibelle() }}</p>
+                    <h4>Prix:</h4>
+                    <p>{{ article.getprice() }}</p>
+                    <h4>Disponible:</h4>
+                    <p>{% if article.isIsDisponible() %}Yes{% else %}No{% endif %}</p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Marque:</h4>
+                    <p>{{ article.getMarque() }}</p>
+                    <h4>Catégorie:</h4>
+                    <p>{{ article.getCategorie().getnomCategorie() }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

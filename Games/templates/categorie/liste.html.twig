@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  <h2>
+    Liste des categories | <small><a href="{{ path('Ajouter') }}">Ajouter</a></small>
+  </h2>
+  {% for msg in app.flashes('notice') %}
+    {{ msg }}
+  {% endfor %}
+  {{ form_start(form) }}
+  {{ form_widget(form) }}
+  {{ form_end(form) }}
+  <table class="table table-hover table-striped" border="1">
+    <thead>
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+         nomCategorie
+        </th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      {% for categorie in lesCategories %}
+        <tr>
+          <td>
+            {{ categorie.id }}
+          </td>
+          <td>
+            {{ categorie.nomCategorie }}
+          </td>
+          <td>
+           <a class="btn btn-primary" href="{{ path('categorie_show', {'id': categorie.id}) }}">
+           Voir</a>
+           <a class="btn btn-primary"href="{{path('edit_categorie',{id: categorie.id})}}">
+              Modifier
+            </a>
+           <a class="btn btn-danger"href="{{path('categorie_delete',{id: categorie.id})}}"onclick="return confirm('Are you sure you want to delete {{categorie.nomCategorie}}')">
+              Supprimer
+            </a>
+          
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

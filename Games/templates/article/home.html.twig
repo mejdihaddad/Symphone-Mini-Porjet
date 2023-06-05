@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h2>
+    Liste des Jeux | <small><a href="{{ path('AjouterArticle') }}"> Ajouter</a></small>
+  </h2>
+  {% for msg in app.flashes('notice') %}
+    {{ msg }}
+  {% endfor %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+ 
+  <table class="table table-hover table-striped" border="1">
+    <thead>
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Libelle
+        </th>
+        <th>
+          Price
+        </th>
+           <th>
+          IsDisponible
+        </th>
+        <th>
+          Marque
+        </th>
+        <th>
+          Categorie
+        </th>  
+      </tr>
+    </thead>
+    <tbody>
+      {% for article in lesarticles %}
+        <tr>
+          <td>
+            {{ article.id }}
+          </td>
+          <td>
+            {{ article.Libelle }}
+          </td>
+          <td>
+            {{ article.price }}
+          </td>
+          <td>
+            {% if article.isDisponible %}
+              Oui
+            {% else %}
+              Non
+            {% endif %}
+          </td>
+          <td>
+            {{ article.Marque }}
+          </td>
+             <td>
+            {{ article.getCategorie().getnomCategorie() }}
+          </td>
+          <td> 
+            <a class="btn btn-primary"
+              href="{{
+              path(
+                'article_show',
+                {
+                  id: article.id
+                }
+              )
+              }}">
+              Voir
+            </a>
+            <a class="btn btn-primary"
+              href="{{
+              path(
+                'edit_article',
+                {
+                  id: article.id
+                }
+              )
+              }}">
+              Modifier
+            </a>
+             <a class="btn btn-danger"
+              href="{{
+              path(
+                'article_delete',
+                {
+                  id: article.id
+                }
+              )
+              }}"
+              onclick="return confirm('Are you sure you want to delete {{
+              article.Libelle
+              }} ?')">
+              Supprimer
+            </a>
+    
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <title>{% block title %}Games{% endblock %}</title>
+        
+        {% block stylesheets %}
+        
+        <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"crossorigin="anonymous"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('C:/xampp/htdocs/Games/public/css/app.css')}}" />  
+        {% endblock %}
+
+        {% block javascripts %}
+          
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ path('home') }}">Games</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('liste_categorie') }}">Categorie</a></li>
+                </ul>
+               
+            </div>
+        </nav>
+        <img src="{{asset('images/gta.png')}}" title="my image" alt="My image" width="1250" height="300">
+      {# <a href="{{path('login')}}">sign out</a> #}  
+        {% block body %}{% endblock %}
+        </body>
+    </html>
